@@ -11,6 +11,7 @@
     <modules>
         <module>exercise</module>
         <module>algorithm</module>
+        <module>tool</module>
     </modules>
 
     <properties>
