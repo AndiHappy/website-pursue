@@ -9,6 +9,21 @@ import util.PrintUtil;
 
 class Solution {
 
+    public static void main(String[] args) {
+
+        ListNode head = ListNode.construct(new int[]{1,2,3,4,5});
+        ListNode delete = head.next;
+        head.next=delete.next;
+        System.out.println(head);
+
+        ListNode insert = new ListNode(10);
+        ListNode insertBefore = head.next;
+        head.next=insert;
+        insert.next=insertBefore;
+        System.out.println(head);
+
+    }
+
 //  -100 <= Node.val <= 100
 //  0 <= k <= 2 * 109
 
@@ -33,15 +48,7 @@ class Solution {
         return tmp;
     }
 
-    public static void main(String[] args) {
 
-        ListNode head = ListNode.construct(new int[]{1,2,3,4,5});
-        for (int i = 1; i <= 10; i++) {
-            head = ListNode.construct(new int[]{1,2,3,4,5});
-            head = rotateRight(head,i);
-            System.out.println(head);
-        }
-    }
 
 
     // NOTE:1 <= n <= 20
