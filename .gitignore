@@ -1,3 +1,4 @@
 /.idea/
 /exercise/target/classes/
 /exercise/target/test-classes/
+/tool/target/classes/util/
