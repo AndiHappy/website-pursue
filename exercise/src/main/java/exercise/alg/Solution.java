@@ -1,6 +1,7 @@
 package exercise.alg;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import util.ListNode;
@@ -10,18 +11,21 @@ import util.PrintUtil;
 class Solution {
 
     public static void main(String[] args) {
+        uniquePaths(2,3);
+    }
 
-        ListNode head = ListNode.construct(new int[]{1,2,3,4,5});
-        ListNode delete = head.next;
-        head.next=delete.next;
-        System.out.println(head);
+    //1 <= m, n <= 100
+    public static int uniquePaths(int m, int n) {
+        if(m == 1 || n == 1) return m==1?n:m;
+        int[][] path = new int[m][n];
+        Arrays.fill(path,1);
+        PrintUtil.pIntArray(path);
+        return uniquePaths(path,m,n,0,0);
+    }
 
-        ListNode insert = new ListNode(10);
-        ListNode insertBefore = head.next;
-        head.next=insert;
-        insert.next=insertBefore;
-        System.out.println(head);
-
+//    path[m][n] = path[m-1][n] + path[m][n-1]
+    private static int uniquePaths(int[][] path, int m, int n, int ms, int ns) {
+    return 0;
     }
 
 //  -100 <= Node.val <= 100
