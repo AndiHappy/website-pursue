@@ -1,9 +1,59 @@
 package exercise.alg;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import util.ListNode;
 import util.PrintUtil;
+
+
 class Solution {
+
+    public static void main(String[] args) {
+        uniquePaths(2,3);
+    }
+
+    //1 <= m, n <= 100
+    public static int uniquePaths(int m, int n) {
+        if(m == 1 || n == 1) return m==1?n:m;
+        int[][] path = new int[m][n];
+        Arrays.fill(path,1);
+        PrintUtil.pIntArray(path);
+        return uniquePaths(path,m,n,0,0);
+    }
+
+//    path[m][n] = path[m-1][n] + path[m][n-1]
+    private static int uniquePaths(int[][] path, int m, int n, int ms, int ns) {
+    return 0;
+    }
+
+//  -100 <= Node.val <= 100
+//  0 <= k <= 2 * 109
+
+    public static ListNode rotateRight(ListNode head, int k) {
+
+        if(k > 0 || head == null || head.next == null) return head;
+
+        ListNode tmp = head;
+        int length = 0;
+        for(; tmp != null; tmp=tmp.next, length++ );
+        if(k >= length ) k=k%length;
+        if(k <=0) return head;
+
+        ListNode first = null;
+        ListNode second = head;
+        int value = length-k;
+        for (;value>0;first=second,second=second.next,value--);
+        tmp = second;
+        for (;second!=null && second.next != null;second=second.next);
+        if(second != null) second.next=head;
+        if(first!=null)first.next=null;
+        return tmp;
+    }
+
+
+
 
     // NOTE:1 <= n <= 20
     public static int[][] generateMatrix(int n) {
@@ -82,34 +132,4 @@ class Solution {
         return result.toArray(new int[][]{});
     }
 
-    public static void main(String[] args) {
-        System.out.println("keep happy");
-        int[][] intervals = new int[][]{{1,3},{6,9}};
-        int[] newInterval= new int[]{2,5};
-        int[][] result = insert(intervals,newInterval);
-        PrintUtil.pIntArray(result);
-        PrintUtil.pLine();
-        intervals = new int[][]{{1,2},{3,5},{6,7},{8,10},{12,16}};
-        newInterval= new int[]{4,8};
-         result = insert(intervals,newInterval);
-        PrintUtil.pIntArray(result);
-
-        PrintUtil.pLine();
-        intervals = new int[][]{};
-        newInterval= new int[]{4,8};
-        result = insert(intervals,newInterval);
-        PrintUtil.pIntArray(result);
-
-        PrintUtil.pLine();
-        intervals = new int[][]{{1,5}};
-        newInterval= new int[]{2,3};
-        result = insert(intervals,newInterval);
-        PrintUtil.pIntArray(result);
-
-        PrintUtil.pLine();
-        intervals = new int[][]{{1,5}};
-        newInterval= new int[]{2,7};
-        result = insert(intervals,newInterval);
-        PrintUtil.pIntArray(result);
-    }
 }
