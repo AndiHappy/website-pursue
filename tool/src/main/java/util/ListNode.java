@@ -9,6 +9,13 @@ public class ListNode {
     public ListNode() {
     }
 
+    public ListNode inverse() {
+        ListNode cur=null,next=this;
+        for (ListNode after=next.next; next!=null && after != null;next.next=cur,cur=next,next=after,after=next.next);
+        next.next=cur;
+        return next;
+    }
+
     /**
      * 构建方法
      * */

@@ -1,4 +1,4 @@
-package LeetCode.l;
+package l;
 
 class LeetCode058 {
     public static int[][] generateMatrix(int n) {
