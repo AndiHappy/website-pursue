@@ -51,8 +51,40 @@ public class LeetCode065_Valid_Number {
      * */
 
 
-    public static void main(String[] args) {
-        System.out.println("keep happy");
-
+    public static boolean validate(String string){
+        String  s=string.trim();
+        boolean digitSeen = false;
+        boolean digitAfterESeen=true;
+        boolean ditSeen = false;
+        boolean ESeen = false;
+        for (int i = 0; i < s.length(); i++) {
+            Character cur = s.charAt(i);
+            if('0' <= cur && cur <= '9'){
+                digitSeen=true;
+                digitAfterESeen=true;
+            }else if('.' == cur){
+                //  (Optional) An 'e' or 'E', followed by an integer.
+                //  E 之后，只能是 integer，不能出现.
+                if(ditSeen || ESeen){
+                    return false;
+                }
+                ditSeen=true;
+            }else if('e' == cur||'E'==cur){
+                // ee，1e formate，
+                // e3 formate
+                if(ESeen || !digitSeen){
+                    return false;
+                }
+                ESeen=true;
+                digitAfterESeen=false;
+            }else if('+' == cur || '-' == cur){
+                if(i!=0 && s.charAt(i-1) != 'e' && s.charAt(i-1) != 'E' ){
+                    return false;
+                }
+            }else {
+                return false;
+            }
+        }
+        return digitSeen && digitAfterESeen;
     }
 }
